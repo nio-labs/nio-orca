@@ -100,12 +100,19 @@
                 <tr><td>Stock <code>Qwen2.5-Coder-3B</code> (<code>INT4</code>)</td><td><code>3.0B</code></td><td>1 pod</td><td>79.27% (130/164)</td><td>73.0% (73/100)</td><td>—</td><td>—</td></tr>
                 <tr><td>Stock <code>Qwen2.5-Coder-3B</code> (<code>FP16</code>)</td><td><code>3.0B</code></td><td>1 pod</td><td>81.10% (133/164)</td><td>74.0% (74/100)</td><td>—</td><td>—</td></tr>
                 <tr><td>Stock <code>Qwen2.5-Coder-7B</code> (<code>INT4</code>)</td><td><code>7.0B</code></td><td>1 pod</td><td>84.15% (138/164)</td><td>84.0% (84/100)</td><td>—</td><td>—</td></tr>
+                <tr><td>Stock <code>Qwen2.5-Coder-14B</code> (<code>FP16</code>, Pass@1)*</td><td><code>14.7B</code></td><td>1 pod</td><td>89.60%</td><td>87.2%</td><td>—</td><td>—</td></tr>
                 <tr><td><strong>Orca Nano</strong> (<code>0.5B × 13</code>)</td><td><strong>0.5B</strong></td><td><strong>13 pods</strong> (~4.9 GB, 380 MB/pod)</td><td><strong>85.37%</strong> (140/164)</td><td><strong>84.0%</strong> (84/100)</td><td><strong>~582 MB</strong></td><td><strong>~20 w/s</strong></td></tr>
                 <tr><td><strong>Orca Mini</strong> (<code>1.5B × 13</code>)</td><td><strong>1.5B</strong></td><td><strong>13 pods</strong> (~12.2 GB, 941 MB/pod)</td><td><strong>86.59%</strong> (142/164)</td><td><strong>87.0%</strong> (87/100)</td><td><strong>~1,839 MB</strong></td><td><strong>8–10 w/s</strong></td></tr>
                 <tr><td><strong>Orca Omni</strong> (<code>0.5B Fast → 1.5B Esc.</code>)</td><td><strong>0.5B / 1.5B</strong></td><td><strong>26 pods</strong> (~17.1 GB: Nano + Mini)</td><td><strong>92.07%</strong> (151/164)</td><td><strong>89.0%</strong> (89/100)</td><td><strong>~582–1,839 MB</strong></td><td><strong>8–20 w/s</strong></td></tr>
               </tbody>
             </table>
           </div>
+          <h3>How We Benchmark (Methodology)</h3>
+          <ul>
+            <li><strong>Datasets:</strong> Full <code>openai/openai_humaneval</code> (164 tasks) and <code>google-research-datasets/mbpp</code> (sanitized, 100 tasks) in isolated Python subprocesses with a 5s timeout.</li>
+            <li><strong>Baselines:</strong> <code>3B</code> &amp; <code>7B INT4</code> were evaluated in the same multi-round harness; *<code>Qwen2.5-Coder-14B-Instruct</code> (<code>FP16</code>) is the published single-shot Pass@1 baseline from <code>arXiv:2409.12186</code>.</li>
+            <li><strong>Orca Protocol:</strong> <code>Orca Nano</code> (32-round 0.5B FP16 hybrid), <code>Orca Mini</code> (16-round 1.5B INT4), and <code>Orca Omni</code> (2 fast 0.5B rounds + 16 1.5B escalation/repair rounds) use the same error-guided + fresh-restart <code>--verify</code> loop built into <code>nioxs</code>. Host <code>VmHWM</code> and CPU speed were measured on <code>i7-10610U</code> with <code>Q4_K_M.gguf</code>.</li>
+          </ul>
         </section>
 
         <!-- 3. QUICKSTART -->
