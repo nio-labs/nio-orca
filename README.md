@@ -26,9 +26,14 @@
 
 ## ⚡ Quick Start
 
-### 1. One-Line Install
+### 1. Install the Sovereign Engine (`nioxs`)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nio-labs/nio-orca/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nio-labs/nio-xs/main/install.sh | bash
+```
+
+For native Windows (PowerShell):
+```powershell
+irm https://raw.githubusercontent.com/nio-labs/nio-xs/main/install.ps1 | iex
 ```
 
 ### 2. Pull Your Preferred Tier (from GitHub Releases `v0.6.0`)
