@@ -11,17 +11,23 @@
 
 ---
 
-## 📊 Benchmark Comparison vs. Stock `Qwen2.5-Coder-Instruct`
+## 📊 Ranked Benchmark Leaderboard (Sorted by HumanEval)
 
-| Model / Fleet | Active Params | Pods & Total Size (`Q4_K_M`) | HumanEval (`164`) | MBPP (`100`) | Host RAM (`VmHWM`) | CPU Speed |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Stock `Qwen2.5-Coder-3B` (`INT4`) | `3.0B` | `1` pod | `79.27%` (`130/164`) | `73.0%` (`73/100`) | — | — |
-| Stock `Qwen2.5-Coder-3B` (`FP16`) | `3.0B` | `1` pod | `81.10%` (`133/164`) | `74.0%` (`74/100`) | — | — |
-| Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
-| Stock `Qwen2.5-Coder-14B` (`FP16`, Pass@1)* | `14.7B` | `1` pod | `89.60%` | `87.2%` | — | — |
-| **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
-| **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
-| **`Orca Omni`** (`orca-omni-0.5b-1.5b-26b`) | **`0.5B / 1.5B`** | **`26 pods / 26.0B`** (`~17.1 GB`: `Nano + Mini`) | **`92.07%`** (`151/164`) | **`89.0%`** (`89/100`) | **`~582–1,839 MB`** | **`8–20 w/s`** |
+| Rank | Model / Fleet | Active Params | Pods & Total Size (`Q4_K_M`) | HumanEval (`164`) | MBPP (`100`) | Host RAM (`VmHWM`) | CPU Speed |
+| :---: | :--- | :---: | :--- | :--- | :--- | :--- | :--- |
+| **1** | `Qwen2.5-Coder-32B-Instruct` (`FP16`, Pass@1)* | `32.5B` | `1` pod (cloud/server) | `92.70%` | `90.2%` | — | — |
+| **2** | `OpenAI o1` (Frontier, Pass@1)* | Frontier | Cloud API | `92.40%` | — | — | — |
+| **3** | **`Orca Omni`** (`orca-omni-0.5b-1.5b-26b`) | **`0.5B / 1.5B`** | **`26 pods / 26.0B`** (`~17.1 GB`: `Nano + Mini`) | **`92.07%`** (`151/164`) | **`89.0%`** (`89/100`) | **`~582–1,839 MB`** | **`8–20 w/s`** |
+| **4** | `Claude 3.5 Sonnet` (Frontier, Pass@1)* | Frontier | Cloud API | `92.00%` | `91.0%` | — | — |
+| **5** | `DeepSeek-V3` (`671B` MoE, Pass@1)* | `37B` | Cloud / cluster | `91.60%` | `75.4%` | — | — |
+| **6** | `GPT-4o` (Frontier, Pass@1)* | Frontier | Cloud API | `90.20%` | `87.2%` | — | — |
+| **7** | `Qwen2.5-Coder-14B-Instruct` (`FP16`, Pass@1)* | `14.7B` | `1` pod | `89.60%` | `87.2%` | — | — |
+| **8** | `Llama-3.1-405B-Instruct` (Pass@1)* | `405B` | Cloud / cluster | `89.00%` | `88.6%` | — | — |
+| **9** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
+| **10** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
+| **11** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
+| **12** | Stock `Qwen2.5-Coder-3B` (`FP16`) | `3.0B` | `1` pod | `81.10%` (`133/164`) | `74.0%` (`74/100`) | — | — |
+| **13** | Stock `Qwen2.5-Coder-3B` (`INT4`) | `3.0B` | `1` pod | `79.27%` (`130/164`) | `73.0%` (`73/100`) | — | — |
 
 ### How We Benchmark (Methodology)
 - **Datasets:** Full `openai/openai_humaneval` (`164` tasks) and `google-research-datasets/mbpp` (`sanitized`, `100` tasks), executed in isolated Python subprocesses with a `5s` per-task timeout.
