@@ -344,7 +344,7 @@ code[class*="language-"],
 code:not([class*="language-"]) {
   font-size: 13.5px;
   background-color: var(--bg-secondary);
-  color: #0969da;
+  color: var(--accent-color);
   padding: 2px 6px;
   border-radius: 4px;
   border: 1px solid var(--border-color);
@@ -352,13 +352,13 @@ code:not([class*="language-"]) {
 
 pre[class*="language-"] {
   font-size: 13.5px !important;
-  background-color: #f6f8fa !important;
-  border: 1px solid #d0d7de !important;
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--border-color) !important;
   border-radius: 8px !important;
   padding: 16px !important;
   margin-bottom: 20px !important;
   overflow-x: auto;
-  color: #1f2328 !important;
+  color: var(--text-primary) !important;
 }
 
 /* High-Contrast Syntax Colors */
@@ -630,15 +630,35 @@ tr:nth-child(even) td {
 }
 
 [data-theme="dark"] pre,
-[data-theme="dark"] code {
+[data-theme="dark"] pre[class*="language-"],
+[data-theme="dark"] code[class*="language-"] {
   background-color: var(--code-bg) !important;
   color: var(--text-primary) !important;
+  text-shadow: none !important;
+  border-color: var(--border-color) !important;
 }
-[data-theme="dark"] .token.comment { color: #8b949e; }
-[data-theme="dark"] .token.string { color: #a5d6ff; }
-[data-theme="dark"] .token.number { color: #79c0ff; }
-[data-theme="dark"] .token.keyword { color: #ff7b72; }
-[data-theme="dark"] .token.function { color: #d2a8ff; }
+[data-theme="dark"] :not(pre) > code {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--accent-hover) !important;
+  border-color: var(--border-color) !important;
+}
+[data-theme="dark"] pre[class*="language-"] .token {
+  background: transparent !important;
+  text-shadow: none !important;
+}
+[data-theme="dark"] .token.comment,
+[data-theme="dark"] .token.prolog,
+[data-theme="dark"] .token.doctype,
+[data-theme="dark"] .token.cdata { color: #8b949e !important; }
+[data-theme="dark"] .token.string,
+[data-theme="dark"] .token.char,
+[data-theme="dark"] .token.attr-value { color: #a5d6ff !important; }
+[data-theme="dark"] .token.number,
+[data-theme="dark"] .token.boolean { color: #79c0ff !important; }
+[data-theme="dark"] .token.keyword,
+[data-theme="dark"] .token.operator { color: #ff7b72 !important; }
+[data-theme="dark"] .token.function,
+[data-theme="dark"] .token.class-name { color: #d2a8ff !important; }
 
 /* Theme toggle button */
 .theme-toggle-btn {
