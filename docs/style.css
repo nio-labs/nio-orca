@@ -452,7 +452,7 @@ th {
 td {
   padding: 10px 14px;
   border-bottom: 1px solid var(--border-color);
-  color: #333a41;
+  color: var(--text-primary);
 }
 
 tr:last-child td {
@@ -460,7 +460,7 @@ tr:last-child td {
 }
 
 tr:nth-child(even) td {
-  background-color: rgba(246, 248, 250, 0.6);
+  background-color: var(--bg-secondary);
 }
 
 /* Callout Banners */
@@ -473,15 +473,15 @@ tr:nth-child(even) td {
 }
 
 .callout-info {
-  background-color: rgba(9, 105, 218, 0.06);
+  background-color: var(--accent-glow);
   border-left: 4px solid var(--accent-color);
-  color: #1f2328;
+  color: var(--text-primary);
 }
 
 .callout-success {
-  background-color: rgba(26, 127, 55, 0.08);
+  background-color: rgba(26, 127, 55, 0.12);
   border-left: 4px solid var(--success-color);
-  color: #1f2328;
+  color: var(--text-primary);
 }
 
 /* FAQ Items */
