@@ -58,6 +58,10 @@ nioxs pull orca-mini
 
 # Hybrid fast-pass + heavy-escalation fleet (~17.1 GB, 92.07% HumanEval)
 nioxs pull orca-omni
+
+# Optional Wave 1 Domain Bundles (v0.6.1, 0.5B Q4_K_M, ~760 MB/bundle)
+nioxs pull health-wellness
+nioxs pull everyday-home
 ```
 
 ### 3. Run Locally (`--verify` is ON by default)
