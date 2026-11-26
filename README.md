@@ -90,6 +90,16 @@ Each Orca tier organizes 13 specialized `Q4_K_M.gguf` pods around a single dynam
 
 ---
 
+## 🍓 Edge & Hardware Support
+
+Because `nio-xs` compiles natively for `x86_64` and `aarch64` (`ARM64`) with **`~582 MB` Host RAM** for `Orca Nano` (`380 MB/pod`), Orca runs completely offline across:
+
+- **Raspberry Pi 4 / Pi 5 (4GB / 8GB+) & ARM64 SBCs** (Orange Pi, Radxa, Jetson Orin Nano) — run `Orca Nano` or individual `Orca Pods` (`health-wellness`, `everyday-home`) with zero internet and zero cloud fees.
+- **CPU-Only Laptops & Desktops** (Linux, macOS, Windows) — `Orca Nano`, `Orca Mini` (`~1.8 GB` RAM), and `Orca Omni` run directly on CPU with no GPU required.
+- **Workstations & High-VRAM Rigs** — `Orca Max` (`3B` pods) and `Orca Ultra` (`7B` pods) for multi-file project scaffolding (`--out <dir>`).
+
+---
+
 ## 📜 License
 
 - **Nio Orca (`nio-orca`) & Model Weights (`nio-xs-models`):** Licensed under the [**Business Source License 1.1 (`BSL 1.1`)**](LICENSE) (see also [`nio-xs-models/LICENSE`](https://github.com/nio-labs/nio-xs-models/blob/main/LICENSE)). Production, internal, evaluation, testing, and personal local use are permitted (excluding offering the Licensed Work as a competing hosted or managed service). Converts to **Apache License 2.0** on **`2030-01-01`** (`nio-orca`) / **`October 20, 2030`** (`nio-xs-models`).
