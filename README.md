@@ -92,5 +92,5 @@ Each Orca tier organizes 13 specialized `Q4_K_M.gguf` pods around a single dynam
 
 ## 📜 License
 
-- **Nio Orca (`nio-orca`):** Licensed under the [**Business Source License 1.1 (`BSL 1.1`)**](LICENSE). Production, internal, evaluation, testing, and personal local use are permitted (excluding offering the Licensed Work as a competing hosted or managed service). Converts to **Apache License 2.0** on **`2030-01-01`**.
-- **Engine (`nio-xs`) & Weights (`nio-xs-models`):** The [`nio-xs`](https://github.com/nio-labs/nio-xs) inference runtime is dual-licensed under **MIT / Apache-2.0**, and the released Orca model weights in [`nio-xs-models`](https://github.com/nio-labs/nio-xs-models) are licensed under **Apache License 2.0**.
+- **Nio Orca (`nio-orca`) & Model Weights (`nio-xs-models`):** Licensed under the [**Business Source License 1.1 (`BSL 1.1`)**](LICENSE) (see also [`nio-xs-models/LICENSE`](https://github.com/nio-labs/nio-xs-models/blob/main/LICENSE)). Production, internal, evaluation, testing, and personal local use are permitted (excluding offering the Licensed Work as a competing hosted or managed service). Converts to **Apache License 2.0** on **`2030-01-01`** (`nio-orca`) / **`October 20, 2030`** (`nio-xs-models`).
+- **Engine (`nio-xs`):** The [`nio-xs`](https://github.com/nio-labs/nio-xs) inference runtime is licensed under the **MIT License**.
