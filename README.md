@@ -1,6 +1,6 @@
 # 🐋 Nio Orca — Sovereign vMicroLM Pod Fleet
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License: BSL 1.1](https://img.shields.io/badge/License-BSL%201.1-blue.svg)](LICENSE)
 [![Engine: nio-xs](https://img.shields.io/badge/Engine-nio--xs-orange.svg)](https://github.com/nio-labs/nio-xs)
 [![Models: v0.6.0](https://img.shields.io/badge/Models-v0.6.0-emerald.svg)](https://github.com/nio-labs/nio-xs-models/releases/tag/v0.6.0)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-purple.svg)](#quick-start)
