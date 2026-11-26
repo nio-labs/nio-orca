@@ -87,3 +87,10 @@ Each Orca tier organizes 13 specialized `Q4_K_M.gguf` pods around a single dynam
 - **`Orca Max` (`0.5B` Fast + `12× 3B` Pods, `~22.0 GB`)** — Workstation hybrid (`0.5B` fast pass → `3B` escalation pods) for multi-file project boilerplate & `--out <dir>` scaffolding.
 - **`Orca Ultra` (`0.5B` Fast + `12× 7B` Pods, `~50.8 GB`)** — High-VRAM hybrid (`0.5B` fast pass → `7B` escalation pods) for full-repo architecture & complex multi-file builds.
 - **`Orca Pods`** — Installable domain bundles (`Wave 1`: `health-wellness`, `everyday-home`; `Wave 2+`: `math`, `history`, `general-knowledge`, `microservices`, etc.) shared across every tier.
+
+---
+
+## 📜 License
+
+- **Nio Orca (`nio-orca`):** Licensed under the [**Business Source License 1.1 (`BUSL-1.1`)**](LICENSE). Production, internal, evaluation, testing, and personal local use are permitted (excluding offering the Licensed Work as a competing hosted or managed service). Converts to **Apache License 2.0** on **`2030-01-01`**.
+- **Engine (`nio-xs`) & Weights (`nio-xs-models`):** The [`nio-xs`](https://github.com/nio-labs/nio-xs) inference runtime is dual-licensed under **MIT / Apache-2.0**, and the released Orca model weights in [`nio-xs-models`](https://github.com/nio-labs/nio-xs-models) are licensed under **Apache License 2.0**.
