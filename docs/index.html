@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nio Orca — Sub-600MB RAM Sovereign Coding Fleets (0.5B/1.5B) that run on small devices and beat Qwen2.5-Coder-7B INT4 (92.07% HumanEval).">
+  <meta name="theme-color" content="#f6f8fa">
+  <title>Nio Orca — Sovereign vMicroLM Pod Fleet</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="mobile-header">
+    <button class="hamburger-btn" id="menuToggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#overview" class="brand-title">
+      <img class="brand-logo" src="logo.svg" alt="Nio Orca logo">
+      <span class="brand-name">Nio Orca</span>
+      <span class="badge">v0.6.0</span>
+    </a>
+    <button class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+      <span class="theme-icon">
+        <svg viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/></svg>
+      </span>
+    </button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#overview" class="sidebar-brand">
+          <img class="brand-logo" src="logo.svg" alt="Nio Orca logo">
+          <span class="brand-text">
+            <span class="brand-name">Nio Orca</span>
+            <span class="brand-sub">vMicroLM Pod Fleet</span>
+          </span>
+        </a>
+      </div>
+      <nav class="sidebar-nav" aria-label="Documentation">
+        <div class="nav-section">
+          <div class="nav-section-title">Start here</div>
+          <a href="#overview" class="nav-link active">1. Overview</a>
+          <a href="#benchmarks" class="nav-link">2. Benchmarks vs Qwen</a>
+          <a href="#quickstart" class="nav-link">3. Quickstart</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Architecture</div>
+          <a href="#architecture" class="nav-link">4. v-µLM Pods</a>
+          <a href="#tiers" class="nav-link">5. Tier Ladder &amp; Roadmap</a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+          <span class="theme-icon">
+            <svg viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/></svg>
+          </span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+        <a href="https://github.com/nio-labs/nio-orca" target="_blank" rel="noreferrer" class="github-link">
+          <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          <span>GitHub: nio-labs/nio-orca</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="content-wrapper">
+      <div class="content-container">
+        <!-- 1. OVERVIEW -->
+        <section id="overview" class="doc-section">
+          <div class="hero">
+            <span class="badge badge-accent">v0.6.0 Live on GitHub Releases</span>
+            <h1>Nio Orca — Sovereign vMicroLM Pod Fleet</h1>
+            <p class="lead">Sub-600MB RAM specialist coding fleets (<code>0.5B</code> / <code>1.5B</code>) that run on small devices, self-verify every code block by default, and beat <code>Qwen2.5-Coder-7B-Instruct INT4</code>.</p>
+          </div>
+          <p><strong>Nio Orca</strong> replaces monolithic 7B–14B models with a <strong>13-pod specialist fleet</strong> (<code>1× Lead + 6× Action Pods + 6× Reasoner Pods</code>) routed dynamically via <code>pod_manifest.json</code> and executed in native Rust by <a href="https://github.com/nio-labs/nio-xs"><code>nio-xs</code></a>.</p>
+        </section>
+
+        <!-- 2. BENCHMARKS -->
+        <section id="benchmarks" class="doc-section">
+          <h2>2. Benchmark Comparison vs. Stock <code>Qwen2.5-Coder-Instruct</code></h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Model / Fleet</th>
+                  <th>Active Params</th>
+                  <th>Pods &amp; Total Size (<code>Q4_K_M</code>)</th>
+                  <th>HumanEval (<code>164</code>)</th>
+                  <th>MBPP (<code>100</code>)</th>
+                  <th>Host RAM (<code>VmHWM</code>)</th>
+                  <th>CPU Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Stock <code>Qwen2.5-Coder-3B</code> (<code>INT4</code>)</td><td><code>3.0B</code></td><td>1 pod</td><td>79.27% (130/164)</td><td>73.0% (73/100)</td><td>—</td><td>—</td></tr>
+                <tr><td>Stock <code>Qwen2.5-Coder-3B</code> (<code>FP16</code>)</td><td><code>3.0B</code></td><td>1 pod</td><td>81.10% (133/164)</td><td>74.0% (74/100)</td><td>—</td><td>—</td></tr>
+                <tr><td>Stock <code>Qwen2.5-Coder-7B</code> (<code>INT4</code>)</td><td><code>7.0B</code></td><td>1 pod</td><td>84.15% (138/164)</td><td>84.0% (84/100)</td><td>—</td><td>—</td></tr>
+                <tr><td><strong>Orca Nano</strong> (<code>0.5B × 13</code>)</td><td><strong>0.5B</strong></td><td><strong>13 pods</strong> (~4.9 GB, 380 MB/pod)</td><td><strong>85.37%</strong> (140/164)</td><td><strong>84.0%</strong> (84/100)</td><td><strong>~582 MB</strong></td><td><strong>~20 w/s</strong></td></tr>
+                <tr><td><strong>Orca Mini</strong> (<code>1.5B × 13</code>)</td><td><strong>1.5B</strong></td><td><strong>13 pods</strong> (~12.2 GB, 941 MB/pod)</td><td><strong>86.59%</strong> (142/164)</td><td><strong>87.0%</strong> (87/100)</td><td><strong>~1,839 MB</strong></td><td><strong>8–10 w/s</strong></td></tr>
+                <tr><td><strong>Orca Omni</strong> (<code>0.5B Fast → 1.5B Esc.</code>)</td><td><strong>0.5B / 1.5B</strong></td><td><strong>26 pods</strong> (~17.1 GB: Nano + Mini)</td><td><strong>92.07%</strong> (151/164)</td><td><strong>89.0%</strong> (89/100)</td><td><strong>~582–1,839 MB</strong></td><td><strong>8–20 w/s</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 3. QUICKSTART -->
+        <section id="quickstart" class="doc-section">
+          <h2>3. Quickstart</h2>
+          <h3>1. Install the Sovereign Engine (<code>nioxs</code>)</h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/nio-labs/nio-xs/main/install.sh | bash</code></pre>
+          </div>
+          <p>For native Windows (PowerShell):</p>
+          <div class="code-wrapper">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre><code class="language-powershell">irm https://raw.githubusercontent.com/nio-labs/nio-xs/main/install.ps1 | iex</code></pre>
+          </div>
+
+          <h3>2. Pull Weights &amp; Run Locally (<code>--verify</code> is ON by default)</h3>
+          <div class="code-wrapper">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre><code class="language-bash"># Pull verified Q4_K_M pods from nio-labs/nio-xs-models (v0.6.0)
+nioxs pull orca-nano   # 13 pods (~4.9 GB)
+nioxs pull orca-mini   # 13 pods (~12.2 GB)
+nioxs pull orca-omni   # 26 pods (~17.1 GB)
+
+# Run with automatic pod routing & bounded --verify self-repair
+nioxs orca-nano "Write a Python function fib(n) with assert fib(6) == 8"
+nioxs orca-omni "Implement a lock-free ring buffer in Python with tests"
+nioxs orca-omni --think "Implement topological_sort(n, edges) with cycle detection"</code></pre>
+          </div>
+        </section>
+
+        <!-- 4. ARCHITECTURE -->
+        <section id="architecture" class="doc-section">
+          <h2>4. The <code>v-µLM Pods</code> Architecture</h2>
+          <ul>
+            <li><strong><code>1× Lead Pod</code>:</strong> Fast default router &amp; general coding responder.</li>
+            <li><strong><code>6× Action-First Pods</code> (<code>pod_0</code>…<code>pod_5</code>):</strong> Direct code synthesis matched dynamically by salient domain terms in <code>pod_manifest.json</code>.</li>
+            <li><strong><code>6× Dedicated Reasoner Pods</code> (<code>reasoner</code>, <code>architect</code>, <code>algo_reasoner</code>, <code>repair_reasoner</code>, <code>test_reasoner</code>, <code>security_reasoner</code>):</strong> Bounded <code>&lt;think&gt;</code> invariant analysis &amp; error-guided repair when <code>--verify</code> catches a failure.</li>
+          </ul>
+        </section>
+
+        <!-- 5. TIER LADDER -->
+        <section id="tiers" class="doc-section">
+          <h2>5. Tier Ladder &amp; Roadmap</h2>
+          <ul>
+            <li><strong>Orca Nano (<code>0.5B × 13</code>, ~4.9 GB):</strong> Live in <code>v0.6.0</code> — ~582 MB RAM, ~20 w/s CPU, 85.37% HumanEval.</li>
+            <li><strong>Orca Mini (<code>1.5B × 13</code>, ~12.2 GB):</strong> Live in <code>v0.6.0</code> — ~1,839 MB RAM, 8–10 w/s CPU, 86.59% HumanEval.</li>
+            <li><strong>Orca Omni (<code>0.5B + 1.5B</code>, ~17.1 GB):</strong> Live in <code>v0.6.0</code> — 92.07% HumanEval / 89.0% MBPP.</li>
+            <li><strong>Orca Max (<code>3B × 25</code>, ~45.0 GB) &amp; Orca Ultra (<code>7B × 23</code>, ~96.6 GB):</strong> Planned workstation &amp; high-VRAM tiers.</li>
+            <li><strong>Orca Pods:</strong> Standalone cross-tier domain plugin <code>Q4_K_M.gguf</code>s drop-in compatible with every tier.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-powershell.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
