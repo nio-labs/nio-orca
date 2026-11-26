@@ -78,6 +78,6 @@ Each Orca tier organizes 13 specialized `Q4_K_M.gguf` pods around a single dynam
 3. **`6× Dedicated Reasoner Pods` (`reasoner`, `architect`, `algo_reasoner`, `repair_reasoner`, `test_reasoner`, `security_reasoner`):** Concise `<think>` invariant analysis & error-guided repair when `--verify` catches a compile/runtime/assertion failure.
 
 ### Roadmap Tiers
-- **`Orca Max` (`0.5B` Fast + `12× 3B` Pods, `~22.0 GB`)** — Workstation hybrid (`0.5B` fast pass → `3B` escalation pods).
-- **`Orca Ultra` (`0.5B` Fast + `12× 7B` Pods, `~50.8 GB`)** — High-VRAM hybrid (`0.5B` fast pass → `7B` escalation pods).
-- **`Orca Pods`** — Installable domain bundles (`health-wellness`, `everyday-home`, `math`, `history`, `microservices`, etc.) shared across every tier.
+- **`Orca Max` (`0.5B` Fast + `12× 3B` Pods, `~22.0 GB`)** — Workstation hybrid (`0.5B` fast pass → `3B` escalation pods) for multi-file project boilerplate & `--out <dir>` scaffolding.
+- **`Orca Ultra` (`0.5B` Fast + `12× 7B` Pods, `~50.8 GB`)** — High-VRAM hybrid (`0.5B` fast pass → `7B` escalation pods) for full-repo architecture & complex multi-file builds.
+- **`Orca Pods`** — Installable domain bundles (`Wave 1`: `health-wellness`, `everyday-home`; `Wave 2+`: `math`, `history`, `general-knowledge`, `microservices`, etc.) shared across every tier.
