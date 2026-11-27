@@ -28,7 +28,7 @@ Most local AI coding models are either too large for everyday laptops or halluci
 | **7** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
 | **8** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
 | **9** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
-| **10** | **`Tiny Orca`** (`23× 135M`, `nioxs tiny-orca`) | **`135M`** | **`23 pods / 3.11B`** (`~2.3 GB`, `101 MB/pod`) | **`14.63%`** (`24/164`) | **`26.0%`** (`26/100`) | **`~200–300 MB`** | **`~40+ w/s`** |
+| **10** | **`Tiny Orca`** (`23× 135M`, `nioxs tiny-orca`) | **`135M`** | **`23 pods / 3.11B`** (`~2.3 GB`, `101 MB/pod`) | **`14.63%`** (`24/164`) | **`26.0%`** (`26/100`) | **`~333 MB`** | **`~40+ w/s`** |
 
 ### How We Benchmark (Methodology)
 - **Datasets:** Full `openai/openai_humaneval` (`164` tasks) and `google-research-datasets/mbpp` (`sanitized`, `100` tasks), executed in isolated Python subprocesses with a `5s` per-task timeout.
