@@ -22,12 +22,13 @@
 | **5** | `DeepSeek-V3` (`671B` MoE, Pass@1)* | `37B` | Cloud / cluster | `91.60%` | `75.4%` | — | — |
 | **6** | `GPT-4o` (Frontier, Pass@1)* | Frontier | Cloud API | `90.20%` | `87.2%` | — | — |
 | **7** | `Qwen2.5-Coder-14B-Instruct` (`FP16`, Pass@1)* | `14.7B` | `1` pod | `89.60%` | `87.2%` | — | — |
-| **8** | `Llama-3.1-405B-Instruct` (Pass@1)* | `405B` | Cloud / cluster | `89.00%` | `88.6%` | — | — |
-| **9** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
-| **10** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
-| **11** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
-| **12** | Stock `Qwen2.5-Coder-3B` (`FP16`) | `3.0B` | `1` pod | `81.10%` (`133/164`) | `74.0%` (`74/100`) | — | — |
-| **13** | Stock `Qwen2.5-Coder-3B` (`INT4`) | `3.0B` | `1` pod | `79.27%` (`130/164`) | `73.0%` (`73/100`) | — | — |
+| **8** | **`Orca Pack`** (`1.5B Lead + 4× 0.5B Pods`, 16-round) | **`1.5B + 4×0.5B`** | **`5` hot pods (`~2.5 GB`)** | **`89.02%`** (`146/164`) | **`70.0%`** (`70/100`) | **`~2.5 GB`** | **`6–12 w/s`** |
+| **9** | `Llama-3.1-405B-Instruct` (Pass@1)* | `405B` | Cloud / cluster | `89.00%` | `88.6%` | — | — |
+| **10** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
+| **11** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
+| **12** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
+| **13** | Stock `Qwen2.5-Coder-3B` (`FP16`) | `3.0B` | `1` pod | `81.10%` (`133/164`) | `74.0%` (`74/100`) | — | — |
+| **14** | Stock `Qwen2.5-Coder-3B` (`INT4`) | `3.0B` | `1` pod | `79.27%` (`130/164`) | `73.0%` (`73/100`) | — | — |
 
 ### How We Benchmark (Methodology)
 - **Datasets:** Full `openai/openai_humaneval` (`164` tasks) and `google-research-datasets/mbpp` (`sanitized`, `100` tasks), executed in isolated Python subprocesses with a `5s` per-task timeout.
@@ -71,6 +72,9 @@ nioxs orca-nano "Write a Python function fib(n) with assert fib(6) == 8"
 
 # Hybrid 0.5B fast pass + 1.5B reasoner/repair escalation
 nioxs orca-omni "Implement a lock-free ring buffer in Python with tests"
+
+# Mixture-of-Agents Pack (parallel 0.5B Nano Pods + 1.5B Lead synthesis + --verify)
+nioxs orca-pack "Implement an LRU cache with O(1) get/put in Python"
 
 # Force deep <think> reasoning or skip verification
 nioxs orca-omni --think "Implement topological_sort(n, edges) with cycle detection"
