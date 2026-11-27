@@ -1,4 +1,4 @@
-# 🐋 Nio Orca — Sovereign vMicroLM Pod Fleet
+# 🐋 Nio Orca — Offline AI Coding Agent & Specialist Pod Models
 
 [![License: BSL 1.1](https://img.shields.io/badge/License-BSL%201.1-blue.svg)](LICENSE)
 [![Engine: nio-xs](https://img.shields.io/badge/Engine-nio--xs-orange.svg)](https://github.com/nio-labs/nio-xs)
@@ -7,9 +7,9 @@
 
 ## 💡 Why Nio Orca?
 
-> **Why burn 16–32 GB of VRAM—or pay cloud API bills—for one bloated model when a pod of `0.5B`–`1.5B` specialists working together beats `7B`–`14B` monoliths on a laptop CPU?**
+> **Why pay $20/month for a cloud coding agent—or burn 16–32 GB of VRAM—when a local team of `0.5B`–`1.5B` AI coding models can write, test, and self-repair code faster than `7B`–`14B` monoliths on your laptop CPU?**
 
-Monolithic 7B–14B models waste 90% of their weights on every token. **Nio Orca** splits coding intelligence into **specialized `Q4_K_M` micro-pods** (`Lead + Action Pods + Dedicated Reasoners`) backed by `--verify` compiler/test self-repair:
+Most local AI coding models are either too large for everyday laptops or hallucinate broken code with no feedback loop. **Nio Orca** is a **100% offline AI coding agent and specialist model fleet** (`Lead + Action Pods + Dedicated Reasoners`) with built-in `--verify` compiler/test self-repair:
 - **Sub-600 MB to 1.8 GB RAM** (`Orca Nano` / `Mini` / `Omni`) — runs 100% offline in native Rust ([`nio-xs`](https://github.com/nio-labs/nio-xs)).
 - **Beats `Qwen2.5-Coder-7B INT4` (`84.15%`)** across **every** Orca tier — up to **`92.07%` HumanEval** (`Orca Omni`, ahead of `Claude 3.5 Sonnet` & `Qwen2.5-Coder-14B`).
 
