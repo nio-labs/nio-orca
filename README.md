@@ -22,12 +22,13 @@ Monolithic 7B–14B models waste 90% of their weights on every token. **Nio Orca
 | **1** | `Qwen2.5-Coder-32B-Instruct` (`FP16`, Pass@1)* | `32.5B` | `1` pod (cloud/server) | `92.70%` | `90.2%` | — | — |
 | **2** | **`Orca Omni`** (`orca-omni-0.5b-1.5b-26b`) | **`0.5B / 1.5B`** | **`26 pods / 26.0B`** (`~17.1 GB`: `Nano + Mini`) | **`92.07%`** (`151/164`) | **`89.0%`** (`89/100`) | **`~582–1,839 MB`** | **`8–20 w/s`** |
 | **3** | `Claude 3.5 Sonnet` (Frontier, Pass@1)* | Frontier | Cloud API | `92.00%` | `91.0%` | — | — |
-| **4** | `Qwen2.5-Coder-14B-Instruct` (`FP16`, Pass@1)* | `14.7B` | `1` pod | `89.60%` | `87.2%` | — | — |
-| **5** | **`Orca Pack`** (`1.5B Lead + 12× 0.5B Pods`) | **`3.5B`** *(top-4 + Lead)* | **`13 pods / 7.5B`** (`~5.55 GB` total; `~2.5 GB` active) | **`89.02%`** (`146/164`) | **`70.0%`** (`70/100`) | **`~2.5 GB`** | **`6–12 w/s`** |
-| **6** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
-| **7** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
-| **8** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
-| **9** | **`Tiny Orca`** (`23× 135M`, `nioxs tiny-orca`) | **`135M`** | **`23 pods / 3.11B`** (`~2.3 GB`, `101 MB/pod`) | **`14.63%`** (`24/164`) | **`26.0%`** (`26/100`) | **`~200–300 MB`** | **`~40+ w/s`** |
+| **4** | **`Orca Pack (--all-pods)`** (`1.5B Lead + 12× 0.5B Pods`) | **`7.5B`** *(all 13 hot)* | **`13 pods / 7.5B`** (`~5.55 GB` active) | **`~90.85%`** *(est.)* | **`~82.0%`** *(est.)* | **`~5.55 GB`** | **`3–6 w/s`** |
+| **5** | `Qwen2.5-Coder-14B-Instruct` (`FP16`, Pass@1)* | `14.7B` | `1` pod | `89.60%` | `87.2%` | — | — |
+| **6** | **`Orca Pack`** (`1.5B Lead + 4× 0.5B Pods`, default `--top 4`) | **`3.5B`** *(top-4 + Lead)* | **`13 pods / 7.5B`** (`~5.55 GB` total; `~2.5 GB` active) | **`89.02%`** (`146/164`) | **`70.0%`** (`70/100`) | **`~2.5 GB`** | **`6–12 w/s`** |
+| **7** | **`Orca Mini`** (`orca-mini-1.5b-19.5b`) | **`1.5B`** | **`13 pods / 19.5B`** (`~12.2 GB`, `941 MB/pod`) | **`86.59%`** (`142/164`) | **`87.0%`** (`87/100`) | **`~1,839 MB`** | **`8–10 w/s`** |
+| **8** | **`Orca Nano`** (`orca-nano-0.5b-6.5b`) | **`0.5B`** | **`13 pods / 6.5B`** (`~4.9 GB`, `380 MB/pod`) | **`85.37%`** (`140/164`) | **`84.0%`** (`84/100`) | **`~582 MB`** | **`~20 w/s`** |
+| **9** | Stock `Qwen2.5-Coder-7B` (`INT4`) | `7.0B` | `1` pod | `84.15%` (`138/164`) | `84.0%` (`84/100`) | — | — |
+| **10** | **`Tiny Orca`** (`23× 135M`, `nioxs tiny-orca`) | **`135M`** | **`23 pods / 3.11B`** (`~2.3 GB`, `101 MB/pod`) | **`14.63%`** (`24/164`) | **`26.0%`** (`26/100`) | **`~200–300 MB`** | **`~40+ w/s`** |
 
 ### How We Benchmark (Methodology)
 - **Datasets:** Full `openai/openai_humaneval` (`164` tasks) and `google-research-datasets/mbpp` (`sanitized`, `100` tasks), executed in isolated Python subprocesses with a `5s` per-task timeout.
