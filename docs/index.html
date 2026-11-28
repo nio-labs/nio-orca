@@ -21,7 +21,7 @@
     <a href="#overview" class="brand-title">
       <img class="brand-logo" src="logo.svg" alt="Nio Orca logo">
       <span class="brand-name">Nio Orca</span>
-      <span class="badge">v0.6.0</span>
+      <span class="badge">v0.7.0</span>
     </a>
     <button class="theme-toggle-btn" type="button" aria-label="Toggle theme">
       <span class="theme-icon">
@@ -73,7 +73,7 @@
         <!-- 1. OVERVIEW -->
         <section id="overview" class="doc-section">
           <div class="hero">
-            <span class="badge badge-accent">v0.6.0 Live on GitHub Releases</span>
+            <span class="badge badge-accent">v0.7.0 Live on GitHub Releases</span>
             <h1>Nio Orca — Offline AI Coding Agent &amp; Specialist Pod Models</h1>
             <p class="lead">An offline AI coding agent powered by sub-600MB RAM specialist coding models (<code>0.5B</code> / <code>1.5B</code>) that write, compile, test, and self-repair code on your CPU—beating <code>Qwen2.5-Coder-7B-Instruct INT4</code> (<code>92.07%</code> HumanEval).</p>
           </div>
@@ -137,7 +137,9 @@
           <h3>2. Pull Weights &amp; Run Locally (<code>--verify</code> is ON by default)</h3>
           <div class="code-wrapper">
             <button class="copy-btn" type="button">Copy</button>
-            <pre><code class="language-bash"># Pull verified Q4_K_M pods from nio-labs/nio-xs-models (v0.6.0)
+            <pre><code class="language-bash"># Pull verified Q4_K_M pods from nio-labs/nio-xs-models (v0.6.0–v0.7.0)
+nioxs pull orca-xs     # 23× 135M pods (~2.3 GB, ~333 MB RAM)
+nioxs pull orca-s      # 135M Lead + 13× 0.5B pods (~5.0 GB, ~582 MB RAM)
 nioxs pull orca-nano   # 13 pods (~4.9 GB)
 nioxs pull orca-mini   # 13 pods (~12.2 GB)
 nioxs pull orca-omni   # 26 pods (~17.1 GB)
@@ -147,6 +149,8 @@ nioxs pull health-wellness
 nioxs pull everyday-home
 
 # Run with automatic pod routing & bounded --verify self-repair
+nioxs orca-xs "Write a Python function fib(n)"
+nioxs orca-s "Write a Python function fib(n) with assert fib(6) == 8"
 nioxs orca-nano "Write a Python function fib(n) with assert fib(6) == 8"
 nioxs orca-omni "Implement a lock-free ring buffer in Python with tests"
 nioxs orca-omni --think "Implement topological_sort(n, edges) with cycle detection"</code></pre>
@@ -167,6 +171,8 @@ nioxs orca-omni --think "Implement topological_sort(n, edges) with cycle detecti
         <section id="tiers" class="doc-section">
           <h2>5. Tier Ladder &amp; Roadmap</h2>
           <ul>
+            <li><strong>Orca XS (<code>23× 135M</code>, ~2.3 GB):</strong> Live in <code>v0.7.0</code> — ~333 MB RAM, 40+ w/s CPU, Web Scout + Guard, 14.63% HumanEval / 26.0% MBPP.</li>
+            <li><strong>Orca S (<code>135M Lead + 13× 0.5B</code>, ~5.0 GB):</strong> Live in <code>v0.7.0</code> — ~582 MB RAM, ~20 w/s CPU, 72.56% HumanEval / 74.0% MBPP.</li>
             <li><strong>Orca Nano (<code>0.5B × 13</code>, ~4.9 GB):</strong> Live in <code>v0.6.0</code> — ~582 MB RAM, ~20 w/s CPU, 85.37% HumanEval.</li>
             <li><strong>Orca Mini (<code>1.5B × 13</code>, ~12.2 GB):</strong> Live in <code>v0.6.0</code> — ~1,839 MB RAM, 8–10 w/s CPU, 86.59% HumanEval.</li>
             <li><strong>Orca Omni (<code>0.5B + 1.5B</code>, ~17.1 GB):</strong> Live in <code>v0.6.0</code> — 92.07% HumanEval / 89.0% MBPP.</li>

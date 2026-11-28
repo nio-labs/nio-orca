@@ -2,7 +2,7 @@
 
 [![License: BSL 1.1](https://img.shields.io/badge/License-BSL%201.1-blue.svg)](LICENSE)
 [![Engine: nio-xs](https://img.shields.io/badge/Engine-nio--xs-orange.svg)](https://github.com/nio-labs/nio-xs)
-[![Models: v0.6.3](https://img.shields.io/badge/Models-v0.6.3-emerald.svg)](https://github.com/nio-labs/nio-xs-models/releases/tag/v0.6.3)
+[![Models: v0.7.0](https://img.shields.io/badge/Models-v0.7.0-emerald.svg)](https://github.com/nio-labs/nio-xs-models/releases/tag/v0.7.0)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-purple.svg)](#quick-start)
 
 ## 💡 Why Nio Orca?
@@ -34,7 +34,7 @@ Most local AI coding models are either too large for everyday laptops or halluci
 ### How We Benchmark (Methodology)
 - **Datasets:** Full `openai/openai_humaneval` (`164` tasks) and `google-research-datasets/mbpp` (`sanitized`, `100` tasks), executed in isolated Python subprocesses with a `5s` per-task timeout.
 - **Baselines:** `Qwen2.5-Coder-7B` (`INT4`) was evaluated in the same multi-round harness; \*published Pass@1 baselines (`Qwen2.5-Coder-14B/32B`, `Claude 3.5 Sonnet`) are from official technical reports.
-- **Orca Protocol:** `Orca Nano` (32-round `0.5B` FP16 hybrid), `Orca Mini` (16-round `1.5B` INT4 error-guided), `Orca Pack` (`4× 0.5B` Nano Pod notes + 16-round `1.5B` Lead synthesis/repair), and `Orca Omni` (`2` `0.5B` fast-pass rounds solving `56.71%` HE / `57.0%` MBPP, followed by `16` `1.5B` escalation/repair rounds on remaining failures) use the same error-guided + fresh-restart verification loop that runs in `nioxs` (`--verify`).
+- **Orca Protocol:** `Orca XS` (`23× 135M` pods + Web Scout & Grounding Guard), `Orca S` (`135M` Lead + `13× 0.5B` Nano Pods), `Orca Nano` (32-round `0.5B` FP16 hybrid), `Orca Mini` (16-round `1.5B` INT4 error-guided), `Orca Pack` (`4× 0.5B` Nano Pod notes + 16-round `1.5B` Lead synthesis/repair), and `Orca Omni` (`2` `0.5B` fast-pass rounds solving `56.71%` HE / `57.0%` MBPP, followed by `16` `1.5B` escalation/repair rounds on remaining failures) use the same error-guided + fresh-restart verification loop that runs in `nioxs` (`--verify`).
 
 ---
 
@@ -45,8 +45,14 @@ Most local AI coding models are either too large for everyday laptops or halluci
 curl -fsSL https://raw.githubusercontent.com/nio-labs/nio-xs/main/install.sh | bash
 ```
 
-### 2. Pull Your Preferred Tier (from GitHub Releases `v0.6.0`–`v0.6.3`)
+### 2. Pull Your Preferred Tier (from GitHub Releases `v0.6.0`–`v0.7.0`)
 ```bash
+# Ultra-light 135M edge fleet (~2.3 GB, ~333 MB RAM, 40+ w/s CPU)
+nioxs pull orca-xs
+
+# Hybrid 135M Lead + 0.5B Nano Pods (~5.0 GB, ~582 MB RAM, 72.56% HumanEval)
+nioxs pull orca-s
+
 # Ultralight laptop tier (~4.9 GB, ~582 MB RAM, ~20 w/s CPU)
 nioxs pull orca-nano
 
@@ -73,8 +79,11 @@ nioxs orca-omni "Implement a lock-free ring buffer in Python with tests"
 # Mixture-of-Agents Pack (top-4 or --all-pods 0.5B Nano Pods + 1.5B Lead synthesis)
 nioxs orca-pack --retries 16 "Implement an LRU cache with O(1) get/put in Python"
 
-# Ultra-light 135M edge fleet (~250 MB active RAM)
-nioxs pull tiny-orca && nioxs orca-xs --retries 16 "Write a Python function fib(n)"
+# Hybrid 135M Lead + 0.5B Nano Pods (72.56% HumanEval / 74.0% MBPP)
+nioxs orca-s "Write a Python function fib(n) with assert fib(6) == 8"
+
+# Ultra-light 135M edge fleet (~333 MB active RAM, Web Scout + Guard)
+nioxs orca-xs --retries 16 "Write a Python function fib(n)"
 ```
 
 ---
